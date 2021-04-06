@@ -100,7 +100,7 @@ SCRIPT;
 
 		return true;
 	}
-	
+
 	public static function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerlinks  ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );

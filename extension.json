@@ -2,7 +2,8 @@
 	"name": "MatomoAnalytics",
 	"author": [
 		"John Lewis",
-		"Southparkfan"
+		"Southparkfan",
+		"Mark Muzenhardt"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
 	"version": "1.0.5.8",
@@ -29,7 +30,8 @@
 		"SpecialAnalytics": "includes/SpecialAnalytics.php"
 	},
 	"SpecialPages": {
-		"Analytics": "SpecialAnalytics"
+		"Analytics": "SpecialAnalytics",
+		"PageAnalytics": "SpecialPageAnalytics"
 	},
 	"Hooks": {
 		"CreateWikiCreation": [
