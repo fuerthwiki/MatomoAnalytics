@@ -46,7 +46,8 @@
 		],
 		"SkinAfterBottomScripts": [
 			"MatomoAnalyticsHooks::matomoScript"
-		]
+		],
+		"SkinAddFooterLinks": "MatomoAnalyticsHooks::onSkinAddFooterLinks"
 	},
 	"ResourceModules": {
 		"ext.matomoanalytics.oouiform": {

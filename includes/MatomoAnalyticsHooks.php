@@ -100,5 +100,13 @@ SCRIPT;
 
 		return true;
 	}
-}
+	
+	public static function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerlinks  ) {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 
+		if ( $key === 'places' ) {
+			$footerlinks['statistics'] = Html::rawElement( 'a', [ 'href' => "{$serverurl}" ], 'Statistik' );
+		}
+	}
+}
