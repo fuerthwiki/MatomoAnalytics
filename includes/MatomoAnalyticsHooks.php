@@ -103,10 +103,23 @@ SCRIPT;
 
 	public static function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerlinks  ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		$id = strval( $mAId );
 		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
+		$title = $skin->getRelevantTitle();
+		$urltitle = $title->getPrefixedURL();
 
 		if ( $key === 'places' ) {
-			$footerlinks['statistics'] = Html::rawElement( 'a', [ 'href' => "{$serverurl}" ], 'Statistik' );
+			$footerlinks['statistics'] = Html::rawElement( 'a', [ 'href' => "{$serverurl}
+			?module=API
+			&method=ImageGraph.get&idSite={$id}
+			&segment=pageTitle=^{$urltitle} –
+			&apiModule=VisitsSummary
+			&apiAction=get
+			&token_auth=anonymous
+			&graphType=verticalBar
+			&period=day
+			&date=previous30" ], 'Statistik' );
 		}
 	}
 }
