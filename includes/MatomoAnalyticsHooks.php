@@ -113,13 +113,14 @@ SCRIPT;
 			$footerlinks['statistics'] = Html::rawElement( 'a', [ 'href' => "{$serverurl}
 			?module=API
 			&method=ImageGraph.get&idSite={$id}
-			&segment=pageTitle=^{$urltitle} –
+			&segment=pageUrl=\${$urltitle}
 			&apiModule=VisitsSummary
 			&apiAction=get
 			&token_auth=anonymous
-			&graphType=verticalBar
+			&graphType=evolution
 			&period=day
-			&date=previous30" ], 'Statistik' );
+			&date=previous90" ], 'Statistik' );
+			// verticalBar could also be used as graphType
 		}
 	}
 }
