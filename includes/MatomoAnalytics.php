@@ -42,7 +42,7 @@ class MatomoAnalytics {
 
 		$siteId = $siteJson['value'];
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			try {
 				$dbw->insert(
 					'matomo',
@@ -68,7 +68,7 @@ class MatomoAnalytics {
 		$logger = static::getLogger();
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    (string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
+			(string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
 		) {
 			return;
 		}
@@ -89,7 +89,7 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->delete(
 				'matomo',
@@ -101,7 +101,7 @@ class MatomoAnalytics {
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cache->delete( $key );
 		}
-		
+
 		$logger->debug( "Successfully deleted {$dbname} with id {$siteId}." );
 
 		return true;
@@ -115,7 +115,7 @@ class MatomoAnalytics {
 		$logger = static::getLogger();
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    (string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
+			(string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
 		) {
 			return;
 		}
@@ -136,9 +136,8 @@ class MatomoAnalytics {
 			__METHOD__
 		);
 
-
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->update(
 				'matomo',
